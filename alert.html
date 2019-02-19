@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.3.2.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="al">
+        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+
+    <button class="btn btn-info" id="btn">隐藏</button>
+    <button class="btn btn-info" id="btn2">显示</button>
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <script>
+        $(function () {
+
+            $('#btn').click(function () {
+
+                $('#al').alert('close')
+            })
+
+            $('#btn2').click(function () {
+
+                $('#al').alert()
+            })
+            $('#al').on('closed.bs.alert', function () {
+                alert('关闭了')
+            })
+
+
+        })
+
+    </script>
+</body>
+</html>

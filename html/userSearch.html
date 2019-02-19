@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <script src="../js/jquery.3.2.1.min.js"></script>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/holder.js"></script>
+    <script src="../js/vue.js"></script>
+    <style>
+        body{
+            margin-top: 70px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid" id="userInfo">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+        <a class="navbar-brand text-center" href="#" >二手物品后台管理</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">主页<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-battery-4 text-info">系统监控</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" href="#">sql监控</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">缓存监控</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">系统信息</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">访问日志</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">服务器监控</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">在线用户</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-envelope text-info">消息推送</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">写入消息</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">未完成</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">已完成</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-bars text-info">商品详细管理</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">添加</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">修改</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">查询</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-trash dropdown-item text-danger" href="#">删除</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-bars text-info">权限角色管理</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">添加</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">修改</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">查询</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-trash dropdown-item text-danger" href="#">删除</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-bars text-info">用户角色管理</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">添加</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">修改</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">查询</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-trash dropdown-item text-danger" href="#">删除</a>
+                    </div>
+                </li>
+
+            </ul>
+            <!--全屏-->
+            <a href="#" class="nav-link fa fa-arrows-alt" id="full"></a>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+
+        </div>
+
+        <div class="dropdown mr-5">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="card-img-top" src="holder.js/20x20" alt="Card image cap">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">个人中心</a>
+                <a class="dropdown-item" href="#">修改密码</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">退出系统</a>
+            </div>
+        </div>
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="row mt-2 mb-2">
+        <div class="col-lg-2" id="leftnav">
+            <div id="accordion">
+                <div class="card" id="headingOne">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;用户管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingTwo">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left text-left" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;商品分类管理
+                        </button>
+                    </h5>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingThree">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;角色管理
+                        </button>
+                    </h5>
+
+
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingFour">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;权限管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingFive">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;购物车管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改</a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingSix">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;二手书管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingSeven">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;二手商品管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingEight">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;订单管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseEight" class="collapse show" aria-labelledby="headingEight" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingNine">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseEight">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;商品订单管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseNine" class="collapse show" aria-labelledby="headingNine" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingTen">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseEight">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;学院信息管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseTen" class="collapse show" aria-labelledby="headingTen" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-10">
+
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <i class="fa fa-search"></i>搜索用户
+                </div>
+                <div class="col-lg-4 offset-lg-6 col-md-6 offset-md-4 col-sm-6">
+                    <button class="btn btn-info" data-toggle="collapse" data-target="#colA" aria-expanded="true">隐藏</button>
+                </div>
+            </div>
+            <div class="row">
+                <div id="colA" class="collapse show"  data-parent="#accordion">
+                    <form>
+                        <div class="form-row ml-2">
+                            <div class="form-group row mr-1">
+                                <label for="userName" class="col-sm-3 col-lg-4 col-form-label">用户名</label>
+                                <div class="col-sm-9 col-lg-8">
+                                    <input v-model="userName" type="text" id="userName" class="form-control"  placeholder="用户名">
+                                </div>
+                            </div>
+                            <div class="form-group row mr-1">
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">邮箱</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control"  placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row mr-1">
+                                <label for="inputEmail3" class="col-sm-3 col-lg-4 col-form-label">电话</label>
+                                <div class="col-sm-9 col-lg-8">
+                                    <input type="email" class="form-control"  placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword3" class="col-sm-3 col-form-label">邮箱</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control"  placeholder="Password">
+                                </div>
+                            </div>
+
+                            <div class="col-auto my-1">
+                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>性别...</option>
+                                    <option>男</option>
+                                    <option value="1">女</option>
+                                </select>
+                            </div>
+                            <div class="col-auto my-1">
+                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>学院...</option>
+                                    <option>1</option>
+                                    <option value="1">2</option>
+                                    <option>1</option>
+                                    <option value="1">2</option>
+                                </select>
+                            </div>
+                            <button @click="search" class="btn btn-info btn-sm mr-2" type="button">查询</button>
+                            <button class="btn btn-info btn-sm" type="button">重置</button>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div class="row">
+                <table class="table table-hover table-responsive-sm">
+                    <thead>
+                    <tr>
+                        <!--<th>id</th>-->
+                        <th>学号</th>
+                        <th>昵称</th>
+                        <th>电话</th>
+                        <th>邮箱</th>
+                        <!--<th>性别</th>-->
+                        <!--<th>密码</th>-->
+                        <!--<th>注册时间</th>-->
+                        <th>上次登录时间</th>
+                        <th>是否在线</th>
+                        <!--<th>注册ip</th>-->
+                        <th>登录ip</th>
+                        <th>用户状态</th>
+                        <!--<th>学院编号</th>-->
+                        <th>学院名字</th>
+                        <th>学院状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr v-for="(item,index) in b" :key="index">
+                        <td>{{item.userNum}}</td>
+                        <td>{{item.userName}}</td>
+                        <td>{{item.userPhone}}</td>
+                        <td>{{item.userEmail}}</td>
+                        <td>{{item.userLogintime | state}}</td>
+                        <td>{{item.userIsactive}}</td>
+                        <td>{{item.userLoginip}}</td>
+                        <td>{{item.userState | state}}</td>
+                        <td>{{item.collegeName}}</td>
+                        <td>{{item.collegeState | state}}</td>
+                        <td>
+                            <a href="#" class="text-warning" title="修改用户"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="text-danger" title="删除用户"><i class="fa fa-trash"></i></a>
+                            <a href="#" class="text-danger" title="禁用用户"><i class="fa fa-times-circle"></i></a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-2">
+                    <p>当前页:{{currentPage}}</p>
+                </div>
+                <div class="col-lg-8 offset-lg-2">
+                    <!--分页-->
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" @click.prevent="previous" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            <li v-for="n in pageList" class="page-item"><a @click.prevent="page(n)" class="page-link" href="#">{{n}}</a></li>
+                            <li class="page-item">
+                                <a class="page-link" @click.prevent="next" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script>
+
+
+
+
+    Vue.filter('state', function (value) {
+
+        try {
+            if(value===null||value==='undefined'){
+
+                return '未知';
+            }
+            let state= parseInt(value)
+            switch (state) {
+                case 0:
+                    return '禁用';
+                case 1:
+                    return '正常';
+                case -1:
+                    return '删除';
+                default:
+                    return '未知';
+
+            }
+        }catch (e) {
+
+            return '未知';
+        }
+
+    })
+
+    Vue.filter('gender',function (value) {
+
+        try {
+            let gender= parseInt(value)
+
+            switch (gender) {
+                case 0:
+                    return '女';
+                case 1:
+                    return '男';
+                default:
+                    return '未知';
+            }
+        }
+        catch (e) {
+            return '未知';
+        }
+    })
+
+
+    let vm = new Vue({
+        el:'#userInfo',
+
+        created(){
+
+        },
+        mounted(){
+
+            this.b=this.a.slice(0,this.pageSize);
+            this.len=this.a.length;
+            if(this.pageCount<=5){
+                for (let i = 1;i<=this.pageCount;i++){
+                    this.pageList.push(i)
+                }
+            }else{
+
+                if(this.liCount>=this.pageCount){
+
+                    this.liCount=this.pageCount;
+                }
+
+                for (let i = 1;i<=this.liCount;i++){
+                    this.pageList.push(i)
+                }
+            }
+        },
+        data:{
+
+            //分页li个数
+            liCount:5,
+
+            currentPage:1,
+            //是否是第一次加载
+            isFirst:true,
+
+            len:'',
+
+            pageList:[],
+
+            userName:'',
+            //a是原始数据
+            a:[
+                {
+                    collegeDes: "",
+                    collegeId: "97977401056690176",
+                    collegeName: "软件学院",
+                    collegeNum: "00001",
+                    collegeState: 1,
+                    userEmail: "aaaaaaaaa",
+                    userGender: 1,
+                    userId: "97977401056690231",
+                    userIsactive: 0,
+                    userLoginip: "aaaaaaa",
+                    userName: "李四",
+                    userNum: "aaaaaa",
+                    userPhone: "aaaaaaaaaa",
+                    userPhoto: "",
+                    userPwd: "aaaaaaaaaaaaa",
+                    userRegip: "aaaaaaaa",
+                    userRegtime: "2018-34-16 18:12:00",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "97977401056690177",
+                    collegeName: "外国语学院",
+                    collegeNum: "00002",
+                    collegeState: 1,
+                    userEmail: "",
+                    userId: "97977401056690241",
+                    userLoginip: "",
+                    userName: "用户7",
+                    userNum: "12007",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "123456",
+                    userRegip: "",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "97977401056690177",
+                    collegeName: "外国语学院",
+                    collegeNum: "00002",
+                    collegeState: 1,
+                    userEmail: "",
+                    userId: "97977401056690244",
+                    userLoginip: "",
+                    userName: "用户3",
+                    userNum: "12003",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "123456",
+                    userRegip: "",
+                    userState: 0
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "97977401056690177",
+                    collegeName: "外国语学院",
+                    collegeNum: "00002",
+                    collegeState: 1,
+                    userEmail: "ssss3@163.com",
+                    userGender: 0,
+                    userId: "97995090751913989",
+                    userLoginip: "",
+                    userName: "sssss",
+                    userNum: "12011",
+                    userPhone: "1456456456",
+                    userPhoto: "",
+                    userPwd: "93e5caa07461938f71ccfa2f51a5117a",
+                    userRegip: "0:0:0:0:0:0:0:1",
+                    userRegtime: "2018-40-28 20:12:00",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "97977401056690178",
+                    collegeName: "理学院",
+                    collegeNum: "00003",
+                    collegeState: 1,
+                    userEmail: "ssss@163.com",
+                    userId: "97977401056690242",
+                    userIsactive: 1,
+                    userLoginip: "0:0:0:0:0:0:0:1",
+                    userLogintime: "2018-22-26 20:12:00",
+                    userName: "用户1",
+                    userNum: "12001",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "98d9271d5d65ddd2ab6e55bc242bb4f4",
+                    userRegip: "",
+                    userState: 0
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "97977401056690178",
+                    collegeName: "理学院",
+                    collegeNum: "00003",
+                    collegeState: 1,
+                    userEmail: "",
+                    userId: "97977401056690247",
+                    userLoginip: "",
+                    userName: "用户6",
+                    userNum: "12006",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "123456",
+                    userRegip: "",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "",
+                    collegeName: "",
+                    collegeNum: "",
+                    userEmail: "",
+                    userId: "97977401056690243",
+                    userLoginip: "",
+                    userName: "用户2",
+                    userNum: "12002",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "98d9271d5d65ddd2ab6e55bc242bb4f4",
+                    userRegip: "",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "",
+                    collegeName: "",
+                    collegeNum: "",
+                    userEmail: "",
+                    userId: "97977401056690245",
+                    userLoginip: "",
+                    userName: "用户4",
+                    userNum: "12004",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "123456",
+                    userRegip: "",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "",
+                    collegeName: "",
+                    collegeNum: "",
+                    userEmail: "",
+                    userId: "97977401056690246",
+                    userLoginip: "",
+                    userName: "用户5",
+                    userNum: "12005",
+                    userPhone: "",
+                    userPhoto: "",
+                    userPwd: "123456",
+                    userRegip: "",
+                    userState: 0
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "",
+                    collegeName: "",
+                    collegeNum: "",
+                    userEmail: "ssss1@163.com",
+                    userGender: 1,
+                    userId: "97995090751913987",
+                    userIsactive: 1,
+                    userLoginip: "0:0:0:0:0:0:0:1",
+                    userLogintime: "2018-42-28 19:12:00",
+                    userName: "12345",
+                    userNum: "12009",
+                    userPhone: "ssssss",
+                    userPhoto: "",
+                    userPwd: "60c229a48325c6e2df8b2541319d5b3a",
+                    userRegip: "0:0:0:0:0:0:0:1",
+                    userRegtime: "2018-41-28 19:12:00",
+                    userState: 1
+                },
+                {
+                    collegeDes: "",
+                    collegeId: "",
+                    collegeName: "",
+                    collegeNum: "",
+                    userEmail: "sssss@163.com",
+                    userGender: 1,
+                    userId: "97995090751913988",
+                    userIsactive: 1,
+                    userLoginip: "0:0:0:0:0:0:0:1",
+                    userLogintime: "2019-37-30 11:12:00",
+                    userName: "ssss",
+                    userNum: "12010",
+                    userPhone: "1564648",
+                    userPhoto: "",
+                    userPwd: "05bf2605fc98bfac025cb2ec7a22e83a",
+                    userRegip: "0:0:0:0:0:0:0:1",
+                    userRegtime: "2018-34-28 20:12:00",
+                    userState: 1
+                }
+            ],
+            //b是分页展示的数据
+            b:[],
+            //c是过滤的数据
+            c:[],
+
+            pageSize:2,
+        },
+        methods:{
+            search(){
+
+                  this.c=this.a.filter((item,index)=>{
+                        return parseInt(item.userState)===parseInt( this.userName)
+                  });
+                  this.b=this.c.slice(0,this.pageSize);
+
+                  this.len=this.c.length;
+
+                  this.isFirst=false;
+
+                  this.currentPage=1;
+            },
+            page(n){
+
+                if(this.isFirst){
+                    this.b = this.a.slice((n-1)*this.pageSize,n*this.pageSize)
+                }else{
+                    this.b = this.c.slice((n-1)*this.pageSize,n*this.pageSize)
+                }
+                this.currentPage=n;
+                let c=Math.floor((this.liCount-1)/2);
+
+                if(n>=this.liCount-c&&n<=this.pageCount-c){
+                    console.log("aaa")
+                    this.pageList=[];
+                    for (let i = n-c;i<=n+c;i++){
+
+                        this.pageList.push(i)
+                    }
+                }else if(n<this.liCount-c){
+
+                    console.log("bbb")
+                    this.pageList=[];
+                    for (let i = 1;i<=this.liCount;i++){
+
+                        this.pageList.push(i)
+                    }
+                }else if(n>this.pageCount-c){
+
+                    console.log("ccc")
+                    this.pageList=[];
+                    for (let i = n-c;i<=this.pageCount;i++){
+                        this.pageList.push(i)
+                    }
+
+                }
+
+                console.log(this.pageList)
+            },
+            previous(){
+
+                this.currentPage--;
+                if(this.currentPage<=0){
+                    this.currentPage=1;
+                }
+
+                let c=Math.floor((this.liCount-1)/2);
+
+                if( this.currentPage>=this.liCount-c&& this.currentPage<=this.pageCount-c){
+                    this.pageList=[];
+                    for (let i =  this.currentPage-c;i<= this.currentPage+c;i++){
+                        this.pageList.push(i)
+                    }
+                }
+
+                if(this.isFirst){
+                    this.b = this.a.slice((this.currentPage-1)*this.pageSize,(this.currentPage)*this.pageSize)
+                }else{
+                    this.b = this.c.slice((this.currentPage-1)*this.pageSize,(this.currentPage)*this.pageSize)
+                }
+            },
+            next(){
+
+                this.currentPage++;
+
+                if(this.currentPage>=this.pageCount){
+
+                    this.currentPage=this.pageCount;
+                }
+
+                let c=Math.floor((this.liCount-1)/2);
+
+                if( this.currentPage>=this.liCount-c&& this.currentPage<=this.pageCount-c){
+                    this.pageList=[];
+                    for (let i =  this.currentPage-c;i<= this.currentPage+c;i++){
+
+                        this.pageList.push(i)
+
+                    }
+                }
+                if(this.isFirst){
+                    this.b = this.a.slice((this.currentPage-1)*this.pageSize,(this.currentPage)*this.pageSize)
+                }else{
+                    this.b = this.c.slice((this.currentPage-1)*this.pageSize,(this.currentPage)*this.pageSize)
+                }
+
+            }
+        },
+        computed:{
+            pageCount(){
+
+                return Math.ceil(this.len/this.pageSize);;
+            }
+
+        },
+
+
+
+
+
+    })
+
+
+</script>
+
+</html>

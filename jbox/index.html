@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.3.2.1.min.js"></script>
+    <link rel="stylesheet" href="jBox.all.min.css">
+    <script src="jBox.all.min.js"></script>
+</head>
+<body>
+
+    <div id="myModal">Click me to open a modal window!</div>
+
+    <div id="myModal1">Click me to open a modal window!</div>
+
+    <span class="tooltip" title="Tooltip 1">Click me!</span>
+    <span class="tooltip" title="Tooltip 2">Click me!</span>
+
+
+    <span class="tooltip" data-jbox-title="Title 1" data-jbox-content="Content 1">Hover me!</span>
+    <span class="tooltip" data-jbox-title="Title 2" data-jbox-content="Content 2">Hover me!</span>
+</body>
+<script>
+
+    $(function () {
+
+
+        // var myModal = new jBox('Modal', {
+        //     content: 'This is my jBox'
+        // });
+        //
+        // myModal.open();
+        //
+        // new jBox('Tooltip', {
+        //     attach: '.tooltip',
+        //     trigger: 'click'
+        // });
+        //
+        new jBox('Confirm', {
+            attach: '#myModal1',
+            title: 'Hurray!',
+            content: 'This is my modal window',
+
+            cancelButton:'取消',
+            cancel(){
+
+                alert('aaaaa')
+
+            }
+        });
+
+        new jBox('Tooltip', {
+            attach: '.tooltip',
+            delayOpen: 500,
+            delayClose: 1000
+        });
+
+        new jBox('Tooltip', {
+            attach: '.tooltip',
+            getTitle: 'data-jbox-title',
+            getContent: 'data-jbox-content'
+        });
+
+
+
+        // var myModal = $('#myModal').jBox('Modal');
+        //
+        // myModal.setTitle('Hello!').setContent('Some content...');
+
+        new jBox('Modal', {closeButton:true,theme:'TooltipError',width:500,height:500,attach: '#myModal', animation: 'tada', title: 'Hurray!',
+              content: 'This is my modal window'});
+
+        // new jBox('Modal', {
+        //     attach: '#myModal',
+        //     ajax: {
+        //         url: '//ajaxresponse.com',
+        //         data: {
+        //             id: 1
+        //         },
+        //         reload: 'strict'
+        //     }
+        // });
+
+    })
+
+
+</script>
+</html>

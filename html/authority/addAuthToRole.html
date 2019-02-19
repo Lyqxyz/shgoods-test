@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../../css/bootstrap-grid.css">
+    <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <script src="../../js/jquery.3.2.1.min.js"></script>
+    <script src="../../js/bootstrap.bundle.js"></script>
+    <script src="../../js/bootstrap.js"></script>
+    <script src="../../js/holder.js"></script>
+    <style>
+        body{
+            margin-top: 70px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+        <a class="navbar-brand text-center" href="#" >二手物品后台管理</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">主页<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-battery-4 text-info">系统监控</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                        <a class="dropdown-item" href="#">sql监控</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">缓存监控</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">系统信息</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">访问日志</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">服务器监控</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">在线用户</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-envelope text-info">消息推送</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">写入消息</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">未完成</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">已完成</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-bars text-info">商品详细管理</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">添加</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">修改</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">查询</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-trash dropdown-item text-danger" href="#">删除</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-bars text-info">权限角色管理</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">添加</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">修改</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">查询</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-trash dropdown-item text-danger" href="#">删除</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-bars text-info">用户角色管理</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                        <a class="fa fa-plus dropdown-item text-info" href="#">添加</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-pencil dropdown-item text-warning" href="#">修改</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-search dropdown-item text-info" href="#">查询</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="fa fa-trash dropdown-item text-danger" href="#">删除</a>
+                    </div>
+                </li>
+
+            </ul>
+            <!--全屏-->
+            <a href="#" class="nav-link fa fa-arrows-alt" id="full"></a>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+
+        </div>
+
+        <div class="dropdown mr-5">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="card-img-top" src="holder.js/20x20" alt="Card image cap">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">个人中心</a>
+                <a class="dropdown-item" href="#">修改密码</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">退出系统</a>
+            </div>
+        </div>
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="row mt-2 mb-2">
+        <div class="col-lg-2" id="leftnav">
+            <div id="accordion">
+                <div class="card" id="headingOne">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;用户管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingTwo">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left text-left" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;商品分类管理
+                        </button>
+                    </h5>
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingThree">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;角色管理
+                        </button>
+                    </h5>
+
+
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingFour">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;权限管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingFive">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;购物车管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseFive" class="collapse show" aria-labelledby="headingFive" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改</a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingSix">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseSix" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;二手书管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseSix" class="collapse show" aria-labelledby="headingSix" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingSeven">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;二手商品管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseSeven" class="collapse show" aria-labelledby="headingSeven" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingEight">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;订单管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseEight" class="collapse show" aria-labelledby="headingEight" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingNine">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseNine" aria-expanded="true" aria-controls="collapseEight">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;商品订单管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseNine" class="collapse show" aria-labelledby="headingNine" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-1" id="headingTen">
+
+                    <h5 class="mb-0">
+                        <button class="btn btn-block btn-info text-left" data-toggle="collapse" data-target="#collapseTen" aria-expanded="true" aria-controls="collapseEight">
+                            <i class="fa fa-bars"></i>&nbsp;&nbsp;学院信息管理
+                        </button>
+                    </h5>
+
+                    <div id="collapseTen" class="collapse show" aria-labelledby="headingTen" data-parent="#accordion">
+                        <div class="list-group">
+                            <a href="#" class="fa fa-plus list-group-item list-group-item-添加 list-group-item-primary">添加</a>
+                            <a href="#" class="fa fa-pencil list-group-item list-group-item-添加 list-group-item-secondary">修改 </a>
+                            <a href="#" class="fa fa-search list-group-item list-group-item-添加 list-group-item-success">查询</a>
+                            <a href="#" class="fa fa-trash list-group-item list-group-item-添加 list-group-item-danger">删除</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-10">
+
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                    <i class="fa fa-search"></i>给用户添加角色
+                </div>
+                <div class="col-lg-4 offset-lg-6 col-md-6 offset-md-4 col-sm-6">
+                    <button class="btn btn-info" data-toggle="collapse" data-target="#colA" aria-expanded="true">隐藏</button>
+                </div>
+            </div>
+            <div class="row">
+                <div id="colA" class="collapse show"  data-parent="#accordion">
+                    <form>
+                        <div class="form-row ml-2">
+                            <div class="form-group row mr-1">
+                                <label for="inputEmail3" class="col-sm-3 col-lg-4 col-form-label">角色id</label>
+                                <div class="col-sm-9 col-lg-8">
+                                    <input type="email" class="form-control"  placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row mr-1">
+                                <label for="inputPassword3" class="col-sm-4 col-form-label">角色编号</label>
+                                <div class="col-sm-8">
+                                    <input type="password" class="form-control"  placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="form-group row mr-1">
+                                <label for="inputEmail3" class="col-sm-3 col-lg-4 col-form-label">角色名</label>
+                                <div class="col-sm-9 col-lg-8">
+                                    <input type="email" class="form-control"  placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="btn btn-info btn-sm mr-2" type="button">查询</button>
+                    <button class="btn btn-info btn-sm" type="button">重置</button>
+                </div>
+            </div>
+            <div class="row">
+                <h6 class="text-info mt-1">此角色拥有的权限</h6>
+                <table class="table table-hover table-responsive-sm">
+                    <thead>
+                    <tr>
+                        <th>权限编号</th>
+                        <th>权限名字</th>
+                        <th>权限状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>aaa</td>
+                        <td>aaa</td>
+                        <td>1</td>
+                        <td>
+                            <a href="#" class="text-danger" title="删除权限"><i class="fa fa-trash"></i></a>
+                            <a href="#" class="text-danger" title="禁用权限"><i class="fa fa-times-circle"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <h6 class="text-info">
+                    此用户没有的角色
+                </h6>
+                <table class="table table-hover table-responsive-sm">
+                    <thead>
+                    <tr>
+                        <th>权限编号</th>
+                        <th>权限名字</th>
+                        <th>权限状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>aaa</td>
+                        <td>aaa</td>
+                        <td>1</td>
+                        <td>
+                            <a href="#" class="text-warning" title="修改用户"> <i class="fa fa-user-plus"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

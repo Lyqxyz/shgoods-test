@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <script src="js/jquery.3.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/holder.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 col-sm-12 mt-5 col-md-6 offset-md-3">
+                <h1 class="text-center text-info mb-1">注册</h1>
+                <form class="mb-3">
+                    <div class="form-group">
+                        <label for="schoolNum">学号</label>
+                        <input type="text" class="form-control" id="schoolNum"  placeholder="输入学号">
+                        <!--<small id="numHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="name">名字</label>
+                        <input type="text" class="form-control" id="name"  placeholder="输入霸气的名字">
+                        <!--<small id="numHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" placeholder="输入密码">
+                        <!--<small id="pwdHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="rePassword">确认密码</label>
+                        <input type="password" class="form-control" id="rePassword" placeholder="再次输入密码">
+                        <!--<small id="pwdHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱</label>
+                        <input type="email" class="form-control" id="email" placeholder="输入邮箱">
+                        <!--<small id="pwdHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">电话</label>
+                        <input type="text" class="form-control" id="phone" placeholder="输入电话">
+                        <!--<small id="pwdHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="man" value="option1">
+                        <label class="form-check-label" for="man">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="woman" value="option2">
+                        <label class="form-check-label" for="woman">女</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-2">注册</button>
+                </form>
+                <a href="#" class="btn-link text-info">[忘记密码]</a>
+                <a href="#" class="btn-link text-info">[登录]</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

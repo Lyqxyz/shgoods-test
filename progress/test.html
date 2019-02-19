@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/an-skill-bar.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/an-skill-bar.js"></script>
+</head>
+<body>
+    <div class="skillbar html">
+        <div class="filled" data-width="90%"></div>
+        <span class="percent">90%</span>
+    </div>
+</body>
+
+<script>
+    $(function () {
+
+        $('.skillbar').skillbar({
+            speed: 1000,
+        });
+    })
+</script>
+</html>

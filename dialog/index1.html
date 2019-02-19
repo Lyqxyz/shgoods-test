@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="dialog.css">
+
+    <!--<script src="../js/jquery.3.2.1.min.js"></script>-->
+
+    <script src="zepto.min.js"></script>
+
+    <script src="dialog.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    // $.dialog({
+    //     type:'info',
+    //     autoClose : 2500,
+    //     contentHtml : '&ltp&gt我是自动关闭的对话框示例展示。&lt/p&gt &ltp&gt我只是用来占位的内容展示，仅仅用来占位撑起提示内容的高度。我只是用来占位的内容展示，仅仅用来占位撑起提示内容的高度。&lt/p&gt'
+    // });
+    //
+    // $.dialog({
+    //     type : 'info',
+    //     infoText : '加载中…',
+    //     infoIcon : 'images/icon/loading.gif',
+    //     autoClose : 2500
+    // });
+
+
+    var infoDialog = $.dialog({
+        type : 'info',
+        infoText : '加载中…',
+        infoIcon : 'images/icon/loading.gif'
+    });
+
+    window.setTimeout(function() {
+        infoDialog.dialog.update({
+            autoClose : 1500,
+            infoText : '操作成功',
+            infoIcon : 'images/icon/success.png'
+        });
+    }, 2500);
+
+</script>
+</html>
