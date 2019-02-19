@@ -12,6 +12,13 @@
     <script src="../../js/bootstrap.bundle.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/holder.js"></script>
+
+    <script src="../../js/vue.js"></script>
+    <script src="../../js/validator.min.js"></script>
+    <link rel="stylesheet" href="../../dialog/dialog.css">
+    <script src="../../dialog/dialog.js"></script>
+    <script src="../../js/qs.js"></script>
+    <script src="../../js/axios.min.js"></script>
     <style>
         body{
             margin-top: 70px;
@@ -21,7 +28,7 @@
 </head>
 <body>
 
-<div class="container-fluid">
+<div class="container-fluid" id="AddBook">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
         <a class="navbar-brand text-center" href="#" >二手物品后台管理</a>
@@ -448,4 +455,38 @@
 
 
 </body>
+<script>
+
+    let vm = new Vue({
+
+        el:'#AddBook',
+        data:{
+
+            book:{
+                name:'',
+                ISBN:'',
+                auth:'',
+                Des:'',
+                Cid:'',
+                Count:'',
+                State:'',
+                nao:'',
+                sellingPrice:'',
+                originalPrice:'',
+                publish:''
+            }
+        },
+        methods:{
+
+
+        },
+
+
+
+    })
+
+
+
+
+</script>
 </html>
