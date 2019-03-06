@@ -12,6 +12,12 @@
     <script src="../../js/bootstrap.bundle.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/holder.js"></script>
+
+    <link rel="stylesheet" href="../../dialog/dialog.css">
+    <!--<script src="../../dialog/zepto.min.js"></script>-->
+    <script src="../../dialog/dialog.js"></script>
+
+    <script src="../../js/vue.js"></script>
     <style>
         body{
             margin-top: 70px;
@@ -20,7 +26,7 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="authinfo">
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
             <a class="navbar-brand text-center" href="#" >二手物品后台管理</a>
@@ -340,22 +346,25 @@
                     <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
-                                <th class="w-auto">编号</th>
-                                <th class="w-auto">权限名</th>
-                                <th class="w-75">描述</th>
+                                <th>id</th>
+                                <th>编号</th>
+                                <th>权限名</th>
+                                <th>描述</th>
+                                <th>状态</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>120153502022</td>
-                                <td>jack</td>
-                                <td>1888888aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa888</td>
+                            <tr v-for="(item,index) in r.list" :key="index">
+                                <td>{{item.authorityId}}</td>
+                                <td>{{item.authorityNum}}</td>
+                                <td>{{item.authorityName}}</td>
+                                <td>{{item.authorityDes}}</td>
+                                <td>{{item.authorityState}}</td>
                                 <td>
                                     <a href="#" class="text-warning" title="修改用户"> <i class="fa fa-pencil"></i></a>
-                                    <a href="#" class="text-danger" title="删除用户"><i class="fa fa-trash"></i></a>
-                                    <a href="#" class="text-danger" title="禁用用户"><i class="fa fa-times-circle"></i></a>
-
+                                    <a @click.prevent="deleteRole(item.roleId)" href="#" class="text-danger" title="删除用户"><i class="fa fa-trash"></i></a>
+                                    <a @click.prevent="forbidRole(item.roleId)" href="#" class="text-danger" title="禁用用户"><i class="fa fa-times-circle"></i></a>
                                 </td>
                             </tr>
 
@@ -370,26 +379,17 @@
                         <!--分页-->
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
+                                <li v-if="r.hasPreviousPage"  class="page-item">
+                                    <a @click.prevent="previous" class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
+
+                                <li @click="page(n)" v-for="n in r.navigatepageNums" class="page-item"><a class="page-link" href="#">{{n}}</a></li>
+
+                                <li v-if="r.hasNextPage" class="page-item">
+                                    <a @click.prevent="next" class="page-link" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
                                     </a>
@@ -403,4 +403,181 @@
         </div>
     </div>
 </body>
+
+<script>
+
+    let vm =new Vue({
+        el:'#authinfo',
+        data:{
+            r:{
+                endRow: 5,
+                hasNextPage: true,
+                hasPreviousPage: false,
+                isFirstPage: true,
+                isLastPage: false,
+                list: [
+                    {
+                        authorityCreationTime: 1545048774000,
+                        authorityDes: "",
+                        authorityId: "97977401056690224",
+                        authorityName: "权限1",
+                        authorityNum: "1",
+                        authorityState: 0,
+                        authorityUpdateTime: 1545048774000
+                    },
+                    {
+                        authorityCreationTime: 1545048774000,
+                        authorityDes: "",
+                        authorityId: "97977401056690225",
+                        authorityName: "权限2",
+                        authorityNum: "2",
+                        authorityState: 1,
+                        authorityUpdateTime: 1545048774000
+                    },
+                    {
+                        authorityCreationTime: 1545048774000,
+                        authorityDes: "",
+                        authorityId: "97977401056690226",
+                        authorityName: "权限3",
+                        authorityNum: "3",
+                        authorityState: 1,
+                        authorityUpdateTime: 1545048774000
+                    },
+                    {
+                        authorityCreationTime: 1545048774000,
+                        authorityDes: "",
+                        authorityId: "97977401056690227",
+                        authorityName: "权限4",
+                        authorityNum: "4",
+                        authorityState: 1,
+                        authorityUpdateTime: 1545048774000
+                    },
+                    {
+                        authorityCreationTime: 1545048774000,
+                        authorityDes: "",
+                        authorityId: "97977401056690228",
+                        authorityName: "权限5",
+                        authorityNum: "5",
+                        authorityState: 1,
+                        authorityUpdateTime: 1545048774000
+                    }
+                ],
+                navigateFirstPage: 1,
+                navigateLastPage: 3,
+                navigatePages: 3,
+                navigatepageNums: [
+                    1,
+                    2,
+                    3
+                ],
+                nextPage: 2,
+                pageNum: 1,
+                pageSize: 5,
+                pages: 3,
+                prePage: 0,
+                size: 5,
+                startRow: 1,
+                total: 11
+            }
+        },
+
+        created(){
+
+            axios.baseURL='http://localhost:8080';
+            axios.defaults.withCredentials=true;
+            axios.get('/role/info/1/4').then(res=>{
+                this.r=res.data.info.data;
+
+            }).catch(err=>{
+
+                console.log(err)
+
+            })
+
+        },
+
+        methods:{
+
+            page(n){
+                if(n!==this.r.pageNum){
+                    let infoDialog = $.dialog({
+                        type : 'info',
+                        infoText : '加载中…',
+                        infoIcon : '../images/icon/loading.gif'
+                    });
+
+                    window.setTimeout(function() {
+                        infoDialog.dialog.update({
+                            autoClose : 1500,
+                            infoText : '操作成功',
+                            infoIcon : '../images/icon/success.png'
+                        });
+                    }, 2500);
+
+                }
+
+            },
+            previous(){
+                if( this.r.hasPreviousPage){
+                    this.page(this.r.prePage)
+                }
+            },
+            next(){
+                if( this.r.hasNextPage){
+                    this.page(this.r.nextPage)
+                }
+            },
+            checkState(userNum,method){
+                let b=this.r.list.filter((item,index)=>item.userNum===userNum)[0];
+                let infoDialog = $.dialog({
+                    type : 'info',
+                    infoText : '加载中…',
+                    infoIcon : '/images/icon/loading.gif'
+                });
+                axios.get(`/role/${method}/${b.userId}/`).then(res=>{
+
+                    let message=res.data.message;
+                    if(res.data.code==='1'){
+
+                        if(method==='forbid'){
+                            b.userState= 0;
+                        }else if (method==='delete') {
+                            b.userState=-1;
+                        }else{
+                            b.userState=1;
+                        }
+
+                        infoDialog.dialog.update({
+                            autoClose : 1500,
+                            infoText : message,
+                            infoIcon : '/images/icon/success.png'
+                        });
+
+                    }else{
+                        infoDialog.dialog.update({
+                            autoClose : 1500,
+                            infoText : message,
+                            infoIcon : '/images/icon/fail.png'
+                        });
+                    }
+                }).catch(err=>{
+                    infoDialog.dialog.update({
+                        autoClose : 1500,
+                        infoText : message,
+                        infoIcon : '/images/icon/fail.png'
+                    });
+                })
+
+            },
+            forbidRole(userNum){
+                this.checkState(userNum,'forbid');
+            },
+            deleteRole(userNum){
+                this.checkState(userNum,'delete');
+            }
+
+
+        }
+    })
+</script>
 </html>

@@ -435,10 +435,61 @@
 
                     $('#exampleModal').modal()
                 }
-                console.log(this.auth);
+
             },
             add(){
 
+                axios.baseURL='http://localhost:8080';
+                axios.defaults.withCredentials=true;
+                axios.post('/auth/add/',this.qs(this.auth)).then(res=>{
+
+                    let {message,code}= res.data;
+                    if(code==='1'){
+
+                        $.dialog({
+                            type:'alert',
+                            titleText:message,
+                            autoClose: 1000
+                        })
+
+                        $('#exampleModal').modal('hide')
+                        for(let key in this.auth){
+
+                            this.auth[key]='';
+                        }
+                    }else{
+
+                        let str='';
+
+                        let errors = res.data.errors.AllError;
+
+                        let errors1 = res.data.errors.errors;
+
+                        for(let i in errors1){
+                            let info=errors1[i]
+                            str+=`<h4 class='text-danger'>${info}</h4>`;
+                        }
+                        for(let i in errors){
+                            errors[i].forEach((item,index)=>{
+                                str+=`<h4 class='text-danger'>${item}</h4>`;
+                            })
+                        }
+                        $.dialog({
+                            type:'alert',
+                            titleText:message,
+                            contentHtml: str,
+                        })
+
+                    }
+                }).catch(err=>{
+
+                    $.dialog({
+                        type:'alert',
+                        titleText:'网路异常',
+
+                    })
+
+                })
 
             },
             check({num,des,name}){
@@ -454,6 +505,10 @@
                 }
 
 
+            },
+            qs(obj){
+
+                return Qs.stringify(obj)
             }
 
         }

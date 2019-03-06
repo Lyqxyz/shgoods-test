@@ -12,21 +12,19 @@
     <script src="../../js/bootstrap.bundle.js"></script>
     <script src="../../js/bootstrap.js"></script>
     <script src="../../js/holder.js"></script>
-
-
-    <link rel="stylesheet" href="../../dialog/dialog.css">
-    <!--<script src="../../dialog/zepto.min.js"></script>-->
-    <script src="../../dialog/dialog.js"></script>
+    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="../dialog/dialog.css">
+    <script src="../dialog/zepto.min.js"></script>
+    <script src="../dialog/dialog.js"></script>
     <style>
         body{
             margin-top: 70px;
             background-color: #b3d7ff;
         }
     </style>
-    <script src="../../js/vue.js"></script>
 </head>
 <body>
-    <div class="container-fluid" id="roleinfo">
+    <div class="container-fluid" id="orderInfo">
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
             <a class="navbar-brand text-center" href="#" >二手物品后台管理</a>
@@ -343,28 +341,34 @@
                     </div>
                 </div>
                 <div class="row">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>编号</th>
-                                <th>角色名</th>
-                                <th>描述</th>
-                                <th>状态</th>
+                                <th>订单id</th>
+                                <th>订单号</th>
+                                <th>订单人id</th>
+                                <th>订单人姓名</th>
+
+                                <th>订单是否收货</th>
+                                <th>订单转态</th>
+
+                                <th>详情</th>
                                 <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item,index) in r.list" :key="index">
-                                <td>{{item.roleId}}</td>
-                                <td>{{item.roleNum}}</td>
-                                <td>{{item.roleName}}</td>
-                                <td>{{item.roleDes}}</td>
-                                <td>{{item.roleState}}</td>
+                            <tr>
+                                <td>2018-8-5</td>
+                                <td>2018-8-5</td>
+                                <td>120153502022</td>
+                                <td>jack</td>
+                                <td>1888888888</td>
+                                <td>95185@qq.com</td>
+                                <td><button class="btn btn-info">详情</button></td>
                                 <td>
                                     <a href="#" class="text-warning" title="修改用户"> <i class="fa fa-pencil"></i></a>
-                                    <a @click.prevent="deleteRole(item.roleId)" href="#" class="text-danger" title="删除用户"><i class="fa fa-trash"></i></a>
-                                    <a @click.prevent="forbidRole(item.roleId)" href="#" class="text-danger" title="禁用用户"><i class="fa fa-times-circle"></i></a>
+                                    <a href="#" class="text-danger" title="删除用户"><i class="fa fa-trash"></i></a>
+                                    <a href="#" class="text-danger" title="禁用用户"><i class="fa fa-times-circle"></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -378,17 +382,26 @@
                         <!--分页-->
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li v-if="r.hasPreviousPage"  class="page-item">
-                                    <a @click.prevent="previous" class="page-link" href="#" aria-label="Previous">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true">&laquo;</span>
                                         <span class="sr-only">Previous</span>
                                     </a>
                                 </li>
-
-                                <li @click="page(n)" v-for="n in r.navigatepageNums" class="page-item"><a class="page-link" href="#">{{n}}</a></li>
-
-                                <li v-if="r.hasNextPage" class="page-item">
-                                    <a @click.prevent="next" class="page-link" href="#" aria-label="Next">
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
                                         <span aria-hidden="true">&raquo;</span>
                                         <span class="sr-only">Next</span>
                                     </a>
@@ -400,137 +413,192 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">用户提示</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="thumbnail">
+                            <h3>详情</h3>
+                            <div class="caption">
+
+                                <p class="text-info">订单交易价格</p>
+                                <p class="text-info">订单是否支付</p>
+                                <p class="text-info">订单收货时间</p>
+                                <p class="text-info">订单收货地址</p>
+                                <p class="text-info">订单更新时间</p>
+                                <p class="text-info">订单创建时间</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">返回修改</button>
+                        <button @click="addUser" type="button" class="btn btn-primary">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 
 <script>
 
-    let a ={
+    let a = {
         code: "1",
-        date: "2019-01-10 20:02:07",
+        date: "2019-03-06 19:35:54",
         errors: { },
         info: {
             data: {
-                endRow: 3,
+                endRow: 2,
                 hasNextPage: true,
                 hasPreviousPage: false,
                 isFirstPage: true,
                 isLastPage: false,
                 list: [
                     {
-                        roleCreationTime: 1545048747000,
-                        roleDes: "",
-                        roleId: "97977401056690233",
-                        roleName: "角色1",
-                        roleNum: "1",
-                        roleState: 0,
-                        roleUpdateTime: 1545136853000,
-                        shUsers: [ ]
+                        orderAddress: "",
+                        orderCreationTime: null,
+                        orderId: "98092238432632832",
+                        orderNum: "98092238432632832",
+                        orderPrice: 12345,
+                        orderReceiptTime: null,
+                        orderUid: {
+                            shRoles: [ ],
+                            userEmail: "",
+                            userId: "97977401056690241",
+                            userLoginip: "",
+                            userName: "用户7",
+                            userNum: "12007",
+                            userPhone: "",
+                            userPhoto: "",
+                            userPwd: "",
+                            userRegip: ""
+                        },
+                        orderUpdateTime: null
                     },
                     {
-                        roleCreationTime: 1545048747000,
-                        roleDes: "",
-                        roleId: "97977401056690234",
-                        roleName: "角色2",
-                        roleNum: "2",
-                        roleState: 0,
-                        roleUpdateTime: 1545048747000,
-                        shUsers: [ ]
-                    },
-                    {
-                        roleCreationTime: 1545048747000,
-                        roleDes: "",
-                        roleId: "97977401056690235",
-                        roleName: "角色3",
-                        roleNum: "3",
-                        roleState: 1,
-                        roleUpdateTime: 1545048747000,
-                        shUsers: [ ]
+                        orderAddress: "",
+                        orderCreationTime: null,
+                        orderId: "98092238432632833",
+                        orderNum: "98092238432632833",
+                        orderPrice: 45622,
+                        orderReceiptTime: null,
+                        orderUid: {
+                            shRoles: [ ],
+                            userEmail: "",
+                            userId: "98006696911175684",
+                            userLoginip: "",
+                            userName: "12345464",
+                            userNum: "12018",
+                            userPhone: "",
+                            userPhoto: "",
+                            userPwd: "",
+                            userRegip: ""
+                        },
+                        orderUpdateTime: null
                     }
                 ],
                 navigateFirstPage: 1,
-                navigateLastPage: 3,
+                navigateLastPage: 2,
                 navigatePages: 3,
                 navigatepageNums: [
                     1,
-                    2,
-                    3
+                    2
                 ],
                 nextPage: 2,
                 pageNum: 1,
-                pageSize: 3,
-                pages: 4,
+                pageSize: 2,
+                pages: 2,
                 prePage: 0,
-                size: 3,
+                size: 2,
                 startRow: 1,
-                total: 10
+                total: 3
             }
         },
         message: "请求成功",
-        path: "/role/info"
+        path: "/order/info/1/2"
     }
 
+    new  Vue({
+        el:'#orderInfo',
 
-    let vm =new Vue({
-        el:'#roleinfo',
         data:{
             r:{
-                endRow: 3,
+                endRow: 2,
                 hasNextPage: true,
                 hasPreviousPage: false,
                 isFirstPage: true,
                 isLastPage: false,
                 list: [
                     {
-                        roleCreationTime: 1545048747000,
-                        roleDes: "",
-                        roleId: "97977401056690233",
-                        roleName: "角色1",
-                        roleNum: "1",
-                        roleState: 0,
-                        roleUpdateTime: 1545136853000,
-                        shUsers: [ ]
+                        orderAddress: "",
+                        orderCreationTime: null,
+                        orderId: "98092238432632832",
+                        orderNum: "98092238432632832",
+                        orderPrice: 12345,
+                        orderReceiptTime: null,
+                        orderUid: {
+                            shRoles: [ ],
+                            userEmail: "",
+                            userId: "97977401056690241",
+                            userLoginip: "",
+                            userName: "用户7",
+                            userNum: "12007",
+                            userPhone: "",
+                            userPhoto: "",
+                            userPwd: "",
+                            userRegip: ""
+                        },
+                        orderUpdateTime: null
                     },
                     {
-                        roleCreationTime: 1545048747000,
-                        roleDes: "",
-                        roleId: "97977401056690234",
-                        roleName: "角色2",
-                        roleNum: "2",
-                        roleState: 0,
-                        roleUpdateTime: 1545048747000,
-                        shUsers: [ ]
-                    },
-                    {
-                        roleCreationTime: 1545048747000,
-                        roleDes: "",
-                        roleId: "97977401056690235",
-                        roleName: "角色3",
-                        roleNum: "3",
-                        roleState: 1,
-                        roleUpdateTime: 1545048747000,
-                        shUsers: [ ]
+                        orderAddress: "",
+                        orderCreationTime: null,
+                        orderId: "98092238432632833",
+                        orderNum: "98092238432632833",
+                        orderPrice: 45622,
+                        orderReceiptTime: null,
+                        orderUid: {
+                            shRoles: [ ],
+                            userEmail: "",
+                            userId: "98006696911175684",
+                            userLoginip: "",
+                            userName: "12345464",
+                            userNum: "12018",
+                            userPhone: "",
+                            userPhoto: "",
+                            userPwd: "",
+                            userRegip: ""
+                        },
+                        orderUpdateTime: null
                     }
                 ],
                 navigateFirstPage: 1,
-                navigateLastPage: 3,
+                navigateLastPage: 2,
                 navigatePages: 3,
                 navigatepageNums: [
                     1,
-                    2,
-                    3
+                    2
                 ],
                 nextPage: 2,
                 pageNum: 1,
-                pageSize: 3,
-                pages: 4,
+                pageSize: 2,
+                pages: 2,
                 prePage: 0,
-                size: 3,
+                size: 2,
                 startRow: 1,
-                total: 10
+                total: 3
             }
-        },
 
+        },
         created(){
 
             axios.baseURL='http://localhost:8080';
@@ -628,11 +696,9 @@
 
 
         }
+
     })
 
 
-
-
 </script>
-
 </html>
